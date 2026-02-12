@@ -283,4 +283,5 @@ if procesado:
                 guardar_en_google_sheets(nombre, correo, telefono, nombre_nino, str(fecha_nacimiento), "Organico", respuestas, resultado_test) 
             except Exception as e:
                 print(f"Error al crear el cliente en Google Sheets: {str(e)}")
+                console_log(f"Error al crear el cliente en Google Sheets: {str(e)}")
                 
