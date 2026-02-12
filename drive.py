@@ -9,6 +9,7 @@ import pytz
 import http.client
 import json
 import streamlit as st
+import streamlit.components.v1 as components
 
 
 # Cargar variables de entorno desde el archivo .env
@@ -275,6 +276,7 @@ def agregar_contacto(nombre_completo, correo, telefono, comercial, resultado_tes
     # Convertimos a minúsculas para que la validación sea insensible a mayúsculas
     if "prueba" in nombre_completo.lower():
         print(f"Registro omitido: El nombre '{nombre_completo}' contiene la palabra de control 'prueba'.")
+        console_log(f"Registro omitido: El nombre '{nombre_completo}' contiene la palabra de control 'prueba'.")
     else:
         print(f"Validación exitosa. Procediendo a crear cliente: {nombre_completo}")
         # Ejecutamos la función que ya definiste anteriormente
@@ -282,4 +284,16 @@ def agregar_contacto(nombre_completo, correo, telefono, comercial, resultado_tes
             crear_cliente(nombre_completo, correo, telefono, comercial, resultado_test)
         except Exception as e:
             print(f"Error al crear el cliente en GHL: {str(e)}")
+            console_log(f"Error al crear el cliente en GHL: {str(e)}")
         
+def console_log(mensaje):
+    """Envía un mensaje a la consola de JavaScript del navegador."""
+    components.html(
+        f"""
+        <script>
+            console.log("{mensaje}");
+        </script>
+        """,
+        height=0, # Evita que ocupe espacio visual en la interfaz
+    )
+
