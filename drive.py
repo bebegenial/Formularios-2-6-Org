@@ -66,8 +66,8 @@ def guardar_en_google_sheets(nombre, correo, telefono, nombre_nino, fecha_nacimi
     spreadsheet = client.open_by_key(os.getenv("SPREADSHEET_ID"))
     sheet = spreadsheet.worksheet(os.getenv("GOOGLE_SHEETS_SPREADSHEET_NAME"))
     '''
-    spreadsheet = client.open_by_key(st.secrets("SPREADSHEET_ID"))
-    sheet = spreadsheet.worksheet(st.secrets("GOOGLE_SHEETS_SPREADSHEET_NAME"))
+    spreadsheet = client.open_by_key(st.secrets["SPREADSHEET_ID"])
+    sheet = spreadsheet.worksheet(st.secrets["GOOGLE_SHEETS_SPREADSHEET_NAME"])
 
     # Obtener la fecha y hora actual en la zona horaria de Colombia
     bogota_tz = pytz.timezone("America/Bogota")
